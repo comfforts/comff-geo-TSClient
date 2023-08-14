@@ -1,3 +1,4 @@
+export { AddressType } from './lib/proto/_gen/geo_pb'
 export { getTypes } from './lib/get-types'
 export { geoLocate } from './lib/geo-locate'
 export { addAddress } from './lib/add-address'
