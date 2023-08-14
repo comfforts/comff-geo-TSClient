@@ -57,4 +57,23 @@ declare global {
     ok: boolean
     error?: Error
   }
+
+  interface IRoute {
+    start: string
+    end: string
+    duration: number
+    distance: number
+    startId: string
+    endId: string
+  }
+
+  interface AddressRouteParams {
+    originIds: string[]
+    destIds: string[]
+  }
+
+  interface IRoutesResponse {
+    routes?: IRoute[]
+    error?: Error
+  }
 }
