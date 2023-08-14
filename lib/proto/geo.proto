@@ -125,8 +125,35 @@ message DeleteAddressRequest {
     string refId = 2;
 }
 
+message RouteLeg {
+    string  start = 1;
+    string  end = 2;
+    int64   duration = 3;
+    float   distance = 4;
+    string  startId = 5;
+    string  endId = 6;
+}
+
+message GeoRouteRequest {
+    repeated GeoRequest origins = 1;
+    repeated GeoRequest destinations = 2;
+    bool                isLatLng = 3;
+}
+
+message AddressRouteRequest {
+    repeated string origins = 1;
+    repeated string destinations = 2;
+}
+
+message RouteResponse {
+    bool                ok = 1;
+    repeated RouteLeg   routeLegs = 2;
+}
+
 service Geo {
     rpc GeoLocate(GeoRequest) returns (GeoResponse) {}
+    rpc GetGeoRoute(GeoRouteRequest) returns (RouteResponse) {}
+    rpc GetAddressRoute(AddressRouteRequest) returns (RouteResponse) {}
     rpc AddGeoLocation(AddGeoLocationRequest) returns (GeoLocationResponse) {}
     rpc GetGeoLocation(GetGeoLocationRequest) returns (GeoLocationResponse) {}
     rpc GetGeoLocations(GetGeoLocationRequest) returns (GeoLocationsResponse) {}
