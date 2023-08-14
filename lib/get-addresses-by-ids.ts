@@ -14,7 +14,7 @@ export const getAddressesByIds = async (
       geoClient.getAddressesByIds(gaReq, (err, res: AddressesResponse) => {
         if (err) {
           console.error('getAddressesByIds() - request error: ', { err, ids })
-          reject(err)
+          resolve({ error: err })
         } else {
           const addrs = res.getAddressesList()
           if (addrs?.length > 1) {
@@ -28,13 +28,13 @@ export const getAddressesByIds = async (
                 ids
               }
             )
-            reject(err)
+            resolve({ error: err })
           }
         }
       })
     } catch (err: any) {
       console.error('getAddressesByIds() - system error: ', { err, ids })
-      reject(err)
+      resolve({ error: err as Error })
     }
   })
 }

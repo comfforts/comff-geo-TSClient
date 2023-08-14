@@ -10,7 +10,7 @@ export const deleteAddress = async (id: string): Promise<OkResponse> => {
       geoClient.deleteAddress(gaReq, (err, res: DeleteResponse) => {
         if (err) {
           console.error('deleteAddress() - request error: ', { err, id })
-          reject({ ok: false, error: err })
+          resolve({ ok: false, error: err })
         } else {
           const ok = res.getOk()
           if (ok) {
@@ -21,13 +21,13 @@ export const deleteAddress = async (id: string): Promise<OkResponse> => {
               err,
               id
             })
-            reject({ ok: false, error: err })
+            resolve({ ok: false, error: err })
           }
         }
       })
     } catch (err: any) {
       console.error('deleteAddress() - system error: ', { err, id })
-      reject({ ok: false, error: err })
+      resolve({ ok: false, error: err })
     }
   })
 }

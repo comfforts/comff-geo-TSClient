@@ -38,6 +38,11 @@ declare global {
     error?: Error
   }
 
+  interface AddAddressRequest {
+    address: IAddress
+    requestedBy: string
+  }
+
   interface AddrResponse {
     address?: IAddress
     error?: Error

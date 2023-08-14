@@ -1,5 +1,9 @@
+import { AddressType } from './proto/_gen/geo_pb'
 import { getTypes } from './get-types'
 import { geoLocate } from './geo-locate'
+import { addAddress } from './add-address'
+import { deleteAddress } from './delete-address'
+import { getAddress } from './get-address'
 
 describe('geo client', () => {
   test('getTypes', async () => {
@@ -45,6 +49,37 @@ describe('geo client', () => {
       expect(resp.point?.formattedAddress).toEqual(
         '1455 S Lamb Blvd, Las Vegas, NV 89104, USA'
       )
+    }
+  })
+
+  test('addressCRUD', async () => {
+    const requestedBy = 'test-address-crud@test.com'
+
+    let resp = await addAddress({
+      address: {
+        id: '',
+        postalCode: '89104',
+        country: 'US',
+        street: '1455 S Lamb Blvd',
+        city: 'Las Vegas',
+        state: 'NV',
+        type: AddressType.GEO
+      },
+      requestedBy
+    })
+    expect(resp.error).toEqual(undefined)
+    const addrId = resp.address?.id
+    expect(addrId).not.toEqual('')
+    expect(addrId).not.toEqual(undefined)
+
+    if (addrId) {
+      resp = await getAddress(addrId)
+      expect(resp.error).toEqual(undefined)
+      expect(addrId).toEqual(resp.address?.id)
+
+      const delResp = await deleteAddress(addrId)
+      expect(delResp.error).toEqual(undefined)
+      expect(delResp.ok).toEqual(true)
     }
   })
 })

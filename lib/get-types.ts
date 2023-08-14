@@ -9,7 +9,7 @@ export const getTypes = async (): Promise<TypesResponse> => {
       geoClient.getAddressTypes(req, (err, res: AddressTypesResponse) => {
         if (err) {
           console.log('getTypes() - request error, %o', { err })
-          reject(err)
+          resolve({ error: err })
         } else {
           const types = res.getAddresstypesList()
           if (types?.length > 0) {
@@ -17,13 +17,13 @@ export const getTypes = async (): Promise<TypesResponse> => {
           } else {
             const err = new Error('no address type found')
             console.error('getTypes() - no address type found, %o', { err })
-            reject(err)
+            resolve({ error: err })
           }
         }
       })
     } catch (err) {
       console.error('getTypes() - system error, %o', { err })
-      reject(err)
+      resolve({ error: err as Error })
     }
   })
 }

@@ -20,7 +20,7 @@ export const geoLocate = async (
       geoClient.geoLocate(gaReq, (err, res: GeoResponse) => {
         if (err) {
           console.error('geoLocate() - request error: ', { err, loc })
-          reject(err)
+          resolve({ error: err })
         } else {
           const pt = res.getPoint()
           if (pt !== undefined) {
@@ -28,13 +28,13 @@ export const geoLocate = async (
           } else {
             const err = new Error('error geo locating')
             console.error('geoLocate() - error geo locating: ', { err, loc })
-            reject(err)
+            resolve({ error: err })
           }
         }
       })
     } catch (err) {
       console.error('geoLocate() - system error: ', { err, loc })
-      reject(err)
+      resolve({ error: err as Error })
     }
   })
 }

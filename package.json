@@ -1,5 +1,5 @@
 {
-  "name": "comff-geo-tsclient",
+  "name": "@hankgalt/comff-geo-tsclient",
   "version": "0.0.10",
   "description": "Comfforts Geo service TS client",
   "main": "index.ts",
@@ -49,5 +49,8 @@
     "ts-jest": "^29.1.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
+  },
+  "directories": {
+    "lib": "lib"
   }
 }
