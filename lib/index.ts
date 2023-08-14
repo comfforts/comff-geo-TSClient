@@ -28,3 +28,20 @@ export const mapPointToILocation = (pt: Point): ILocation => {
     formattedAddress: pt.getFormattedaddress()
   }
 }
+
+export const mapRouteLegsToIRoutes = (rts: RouteLeg[]): IRoute[] => {
+  return rts.map(mapRouteLegToIRoute)
+}
+
+export const mapRouteLegToIRoute = (rt: RouteLeg): IRoute => {
+  if (rt === undefined) return rt
+
+  return {
+    start: rt.getStart(),
+    end: rt.getEnd(),
+    startId: rt.getStartid(),
+    endId: rt.getEndid(),
+    duration: rt.getDuration(),
+    distance: rt.getDistance()
+  }
+}
