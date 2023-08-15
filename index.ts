@@ -2,6 +2,8 @@ export { AddressType } from './lib/proto/_gen/geo_pb'
 
 export type {
   ILocation,
+  IAddress,
+  IRoute,
   GeoLocationResponse,
   TypesResponse,
   AddAddressRequest,
