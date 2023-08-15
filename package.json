@@ -4,7 +4,8 @@
   "description": "Comfforts Geo service TS client",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc -d --declarationDir dist --emitDeclarationOnly",
+    "build": "tsc",
+    "build:types": "tsc -d --emitDeclarationOnly",
     "build:proto": "sh ./scripts/build-proto.sh ",
     "test": "jest --detectOpenHandles",
     "coverage": "jest --collectCoverage --detectOpenHandles",
