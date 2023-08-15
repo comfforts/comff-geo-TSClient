@@ -1,9 +1,9 @@
-import { AddressType } from './proto/_gen/geo_pb'
-import { getTypes } from './get-types'
-import { geoLocate } from './geo-locate'
-import { addAddress } from './add-address'
-import { deleteAddress } from './delete-address'
-import { getAddress } from './get-address'
+import { AddressType } from '../proto/_gen/geo_pb'
+import { getTypes } from '../get-types'
+import { geoLocate } from '../geo-locate'
+import { addAddress } from '../add-address'
+import { deleteAddress } from '../delete-address'
+import { getAddress } from '../get-address'
 
 describe('geo client', () => {
   test('getTypes', async () => {

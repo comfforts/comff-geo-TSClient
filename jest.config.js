@@ -4,5 +4,5 @@ module.exports = {
   testEnvironment: 'node',
   testPathIgnorePatterns: ['<rootDir>/lib/proto/*'],
   coveragePathIgnorePatterns: ['node_modules', '<rootDir>/lib/proto/*'],
-  setupFiles: ["<rootDir>/.jest/envVars.js"]
+  setupFiles: ['<rootDir>/.jest/envVars.js']
 }
