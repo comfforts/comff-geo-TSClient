@@ -4,6 +4,7 @@ export type {
   ILocation,
   IAddress,
   IRoute,
+  BaseAddress,
   GeoLocationParams,
   GeoLocationResponse,
   TypesResponse,
@@ -11,6 +12,7 @@ export type {
   AddrResponse,
   OkResponse,
   AddrsResponse,
+  AddressRouteParams,
   IRoutesResponse,
   GeoServiceClient
 } from './lib'

@@ -5,15 +5,18 @@ export interface ILocation {
   longitude: number
   formattedAddress?: string
 }
-export interface IAddress {
+
+export interface BaseAddress {
+  street?: string
+  city?: string
+  state?: string
+  postalCode: string
+  country: string
+}
+export interface IAddress extends BaseAddress {
   id: string
   refId?: string
   type?: AddressType
-  street?: string
-  city?: string
-  postalCode?: string
-  state?: string
-  country?: string
 }
 
 export interface GeoLocationParams {
