@@ -2,6 +2,7 @@ import { GeoRequest } from './proto/_gen/geo_pb'
 import geoClient from './client'
 import { mapPointToILocation } from './index'
 import type { GeoResponse } from './proto/_gen/geo_pb'
+import type { GeoLocationParams, GeoLocationResponse } from './index'
 
 export const geoLocate = async (
   loc: GeoLocationParams

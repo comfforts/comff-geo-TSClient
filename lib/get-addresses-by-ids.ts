@@ -2,6 +2,7 @@ import { GetAddressesRequest } from './proto/_gen/geo_pb'
 import geoClient from './client'
 import { mapAddressesToIAddresses } from './index'
 import type { AddressesResponse } from './proto/_gen/geo_pb'
+import type { AddrsResponse } from './index'
 
 export const getAddressesByIds = async (
   ids: string[]

@@ -1,14 +1,16 @@
 export { AddressType } from './lib/proto/_gen/geo_pb'
-export interface GeoServiceClient {
-  getTypes: () => Promise<TypesResponse>
-  geoLocate: (loc: ILocation) => Promise<GeoLocationResponse>
-  addAddress: (addReq: AddAddressRequest) => Promise<AddrResponse>
-  getAddress: (id: string) => Promise<AddrResponse>
-  deleteAddress: (id: string) => Promise<OkResponse>
-  getAddressesByIds: (ids: string[]) => Promise<AddrsResponse>
-  getAddressRoute: (ids: string[]) => Promise<IRoutesResponse>
-  closeClient: () => Error | undefined
-}
+
+export type {
+  ILocation,
+  GeoLocationResponse,
+  TypesResponse,
+  AddAddressRequest,
+  AddrResponse,
+  OkResponse,
+  AddrsResponse,
+  IRoutesResponse,
+  GeoServiceClient
+} from './lib'
 
 export { getTypes } from './lib/get-types'
 export { geoLocate } from './lib/geo-locate'

@@ -2,6 +2,7 @@ import { AddressRouteRequest } from './proto/_gen/geo_pb'
 import client from './client'
 import { mapRouteLegsToIRoutes } from './index'
 import type { RouteResponse } from './proto/_gen/geo_pb'
+import type { AddressRouteParams, IRoutesResponse } from './index'
 
 export const getAddressRoute = async (
   params: AddressRouteParams

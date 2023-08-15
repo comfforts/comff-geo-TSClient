@@ -1,4 +1,90 @@
-import type { Point, Address, RouteLeg } from './proto/_gen/geo_pb'
+import type { Point, Address, AddressType, RouteLeg } from './proto/_gen/geo_pb'
+
+export interface ILocation {
+  latitude: number
+  longitude: number
+  formattedAddress?: string
+}
+export interface IAddress {
+  id: string
+  refId?: string
+  type?: AddressType
+  street?: string
+  city?: string
+  postalCode?: string
+  state?: string
+  country?: string
+}
+
+export interface GeoLocationParams {
+  latitude: number
+  longitude: number
+  postalCode?: string
+  country?: string
+  street?: string
+  city?: string
+  state?: string
+}
+
+export interface TypesResponse {
+  types?: AddressType[]
+  error?: Error
+}
+
+export interface GeoLocationResponse {
+  point?: ILocation
+  error?: Error
+}
+
+export interface AddAddressRequest {
+  address: IAddress
+  requestedBy: string
+}
+
+export interface AddrResponse {
+  address?: IAddress
+  error?: Error
+}
+
+export interface AddrsResponse {
+  addresses?: IAddress[]
+  error?: Error
+}
+
+export interface OkResponse {
+  ok: boolean
+  error?: Error
+}
+
+export interface IRoute {
+  start: string
+  end: string
+  duration: number
+  distance: number
+  startId: string
+  endId: string
+}
+
+export interface AddressRouteParams {
+  originIds: string[]
+  destIds: string[]
+}
+
+export interface IRoutesResponse {
+  routes?: IRoute[]
+  error?: Error
+}
+
+export interface GeoServiceClient {
+  getTypes: () => Promise<TypesResponse>
+  geoLocate: (loc: ILocation) => Promise<GeoLocationResponse>
+  addAddress: (addReq: AddAddressRequest) => Promise<AddrResponse>
+  getAddress: (id: string) => Promise<AddrResponse>
+  deleteAddress: (id: string) => Promise<OkResponse>
+  getAddressesByIds: (ids: string[]) => Promise<AddrsResponse>
+  getAddressRoute: (ids: string[]) => Promise<IRoutesResponse>
+  closeClient: () => Error | undefined
+}
 
 export const mapAddressesToIAddresses = (addrs: Address[]): IAddress[] => {
   return addrs.map(mapAddressToIAddress)

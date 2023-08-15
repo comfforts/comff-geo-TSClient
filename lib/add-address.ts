@@ -2,6 +2,7 @@ import { AddressRequest, AddressType } from './proto/_gen/geo_pb'
 import geoClient from './client'
 import { mapAddressToIAddress } from './index'
 import type { AddressResponse } from './proto/_gen/geo_pb'
+import type { AddAddressRequest, AddrResponse } from './index'
 
 export const addAddress = async (
   addReq: AddAddressRequest

@@ -1,6 +1,7 @@
 import { DeleteAddressRequest } from './proto/_gen/geo_pb'
 import geoClient from './client'
 import type { DeleteResponse } from './proto/_gen/geo_pb'
+import type { OkResponse } from './index'
 
 export const deleteAddress = async (id: string): Promise<OkResponse> => {
   return await new Promise<OkResponse>((resolve, reject) => {

@@ -2,6 +2,7 @@ import { GetAddressRequest } from './proto/_gen/geo_pb'
 import geoClient from './client'
 import { mapAddressToIAddress } from './index'
 import type { AddressResponse } from './proto/_gen/geo_pb'
+import type { AddrResponse } from './index'
 
 export const getAddress = async (id: string): Promise<AddrResponse> => {
   return await new Promise<AddrResponse>((resolve, reject) => {

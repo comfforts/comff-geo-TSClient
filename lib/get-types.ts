@@ -1,6 +1,7 @@
 import { AddressTypesRequest } from './proto/_gen/geo_pb'
 import geoClient from './client'
 import type { AddressTypesResponse } from './proto/_gen/geo_pb'
+import type { TypesResponse } from './index'
 
 export const getTypes = async (): Promise<TypesResponse> => {
   return await new Promise<TypesResponse>((resolve, reject) => {
