@@ -39,7 +39,7 @@ const getChannelCredentials = (): grpc.ChannelCredentials => {
   return grpc.ChannelCredentials.createSsl(rootCert, clientKey, clientCert)
 }
 
-const geoClient = new GeoClient('localhost:62051', getChannelCredentials(), {
+const geoClient = new GeoClient(process.env.GRPC_GEO || '', getChannelCredentials(), {
   interceptors: [interceptor]
 })
 
