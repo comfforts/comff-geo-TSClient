@@ -6,7 +6,6 @@
     "skipLibCheck": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
@@ -17,5 +16,5 @@
     "baseUrl": "."
   },
   "include": ["**/*.ts"],
-  "exclude": ["node_modules", "**/_gen/*.js"]
+  "exclude": ["node_modules", "**/_gen/*.js", "*/__test__/*"]
 }

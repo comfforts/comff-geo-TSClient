@@ -1,22 +1,5 @@
 export { AddressType } from './lib/proto/_gen/geo_pb'
 
-export type {
-  ILocation,
-  IAddress,
-  IRoute,
-  BaseAddress,
-  GeoLocationParams,
-  GeoLocationResponse,
-  TypesResponse,
-  AddAddressRequest,
-  AddrResponse,
-  OkResponse,
-  AddrsResponse,
-  AddressRouteParams,
-  IRoutesResponse,
-  GeoServiceClient
-} from './lib'
-
 export { getTypes } from './lib/get-types'
 export { geoLocate } from './lib/geo-locate'
 export { addAddress } from './lib/add-address'

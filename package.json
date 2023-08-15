@@ -1,10 +1,10 @@
 {
   "name": "@hankgalt/comff-geo-tsclient",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "description": "Comfforts Geo service TS client",
   "main": "index.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -d --declarationDir dist --emitDeclarationOnly",
     "build:proto": "sh ./scripts/build-proto.sh ",
     "test": "jest --detectOpenHandles",
     "coverage": "jest --collectCoverage --detectOpenHandles",
