@@ -1,4 +1,4 @@
-import type { Point, Address } from './proto/_gen/geo_pb'
+import type { Point, Address, RouteLeg } from './proto/_gen/geo_pb'
 
 export const mapAddressesToIAddresses = (addrs: Address[]): IAddress[] => {
   return addrs.map(mapAddressToIAddress)

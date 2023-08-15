@@ -7,7 +7,7 @@ export const getTypes = async (): Promise<TypesResponse> => {
     const req = new AddressTypesRequest()
     try {
       geoClient.getAddressTypes(req, (err, res: AddressTypesResponse) => {
-        if (err) {
+        if (err != null) {
           console.log('getTypes() - request error, %o', { err })
           resolve({ error: err })
         } else {

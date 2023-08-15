@@ -72,7 +72,7 @@ describe('geo client', () => {
     expect(addrId).not.toEqual('')
     expect(addrId).not.toEqual(undefined)
 
-    if (addrId) {
+    if (addrId !== undefined && addrId !== '') {
       resp = await getAddress(addrId)
       expect(resp.error).toEqual(undefined)
       expect(addrId).toEqual(resp.address?.id)

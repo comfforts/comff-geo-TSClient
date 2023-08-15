@@ -10,12 +10,12 @@ export const getAddress = async (id: string): Promise<AddrResponse> => {
 
     try {
       geoClient.getAddress(gaReq, (err, res: AddressResponse) => {
-        if (err) {
+        if (err != null) {
           console.error('getAddress() - request error: ', { err, id })
           resolve({ error: err })
         } else {
           const addr = res.getAddress()
-          if (addr) {
+          if (addr !== undefined) {
             resolve({ address: mapAddressToIAddress(addr) })
           } else {
             const err = new Error('error getting shop')

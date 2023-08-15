@@ -1,14 +1,15 @@
-import { DeleteAddressRequest, DeleteResponse } from './proto/_gen/geo_pb'
+import { DeleteAddressRequest } from './proto/_gen/geo_pb'
 import geoClient from './client'
+import type { DeleteResponse } from './proto/_gen/geo_pb'
 
 export const deleteAddress = async (id: string): Promise<OkResponse> => {
-  return new Promise<OkResponse>((resolve, reject) => {
+  return await new Promise<OkResponse>((resolve, reject) => {
     const gaReq = new DeleteAddressRequest()
     gaReq.setId(id)
 
     try {
       geoClient.deleteAddress(gaReq, (err, res: DeleteResponse) => {
-        if (err) {
+        if (err != null) {
           console.error('deleteAddress() - request error: ', { err, id })
           resolve({ ok: false, error: err })
         } else {
@@ -16,7 +17,7 @@ export const deleteAddress = async (id: string): Promise<OkResponse> => {
           if (ok) {
             resolve({ ok })
           } else {
-            const err = new Error(`error deleting address`)
+            const err = new Error('error deleting address')
             console.error('deleteAddress() - error deleting address: ', {
               err,
               id

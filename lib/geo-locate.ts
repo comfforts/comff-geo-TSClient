@@ -18,7 +18,7 @@ export const geoLocate = async (
 
     try {
       geoClient.geoLocate(gaReq, (err, res: GeoResponse) => {
-        if (err) {
+        if (err != null) {
           console.error('geoLocate() - request error: ', { err, loc })
           resolve({ error: err })
         } else {

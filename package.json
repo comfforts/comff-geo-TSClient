@@ -1,6 +1,6 @@
 {
   "name": "@hankgalt/comff-geo-tsclient",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Comfforts Geo service TS client",
   "main": "index.ts",
   "scripts": {
