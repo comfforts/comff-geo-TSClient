@@ -4,6 +4,7 @@ export type {
   ILocation,
   IAddress,
   IRoute,
+  GeoLocationParams,
   GeoLocationResponse,
   TypesResponse,
   AddAddressRequest,
