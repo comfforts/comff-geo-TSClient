@@ -1,0 +1,168 @@
+syntax = "proto3";
+
+package geo.v1;
+
+option go_package = "github.com/comfforts/comff-geo/api/geo_v1";
+
+message Point {
+    float   latitude = 1;
+    float   longitude = 2;
+    string  formattedAddress = 3;
+}
+
+message GeoRequest {
+    string postalCode = 1;
+    string country = 2;
+    string street = 3;
+    string city = 4;
+    string state = 5;
+    float  latitude = 6;
+    float  longitude = 7;
+}
+
+message GeoResponse {
+    Point   point = 1;
+}
+
+message GeoLocation {
+    string hash = 1;
+    string id = 2;
+}
+
+message AddGeoLocationRequest {
+    string id = 1;
+    string hash = 2;
+    float  longitude = 3;
+    float  latitude = 4;
+}
+
+message GetGeoLocationRequest {
+    string id = 1;
+    string hash = 2;
+    float  longitude = 3;
+    float  latitude = 4;
+}
+
+message GeoLocationResponse {
+    bool ok = 1;
+    optional GeoLocation location = 2;
+}
+
+message GeoLocationsResponse {
+    bool                 ok = 1;
+    repeated GeoLocation locations = 2;
+}
+
+message DeleteGeoLocationRequest {
+    string id = 1;
+    string hash = 2;
+    float  longitude = 3;
+    float  latitude = 4;
+}
+
+message DeleteResponse {
+    bool ok = 1;
+}
+
+enum AddressType {
+    SHOP = 0;
+    ORG = 1;
+    PROFILE = 2;
+    COURIER = 3;
+    GEO = 4;
+}
+
+message Address {
+    string      id = 1;
+    string      refId = 2;
+    AddressType type = 3;
+    string      street = 4;
+    string      city = 5;
+    string      postalCode = 6;
+    string      state = 7;
+    string      country = 8;
+}
+
+message AddressTypesRequest {}
+
+message AddressTypesResponse {
+    repeated AddressType addressTypes = 1;
+}
+
+message AddressRequest {
+    string      refId = 1;
+    AddressType type = 2;
+    string      street = 3;
+    string      city = 4;
+    string      postalCode = 5;
+    string      state = 6;
+    string      country = 7;
+    string      requestedBy = 8;
+}
+
+message GetAddressRequest {
+    string  id = 1;
+}
+
+message GetAddressesRequest {
+    string          refId = 1;
+    repeated string addressIds = 2;
+    AddressType     type = 3;
+}
+
+message AddressResponse {
+    bool                ok = 1;
+    optional Address    address = 2;
+}
+
+message AddressesResponse {
+    bool                ok = 1;
+    repeated Address    addresses = 2;
+}
+
+message DeleteAddressRequest {
+    string id = 1;
+    string refId = 2;
+}
+
+message RouteLeg {
+    string  start = 1;
+    string  end = 2;
+    int64   duration = 3;
+    float   distance = 4;
+    string  startId = 5;
+    string  endId = 6;
+}
+
+message GeoRouteRequest {
+    repeated GeoRequest origins = 1;
+    repeated GeoRequest destinations = 2;
+    bool                isLatLng = 3;
+}
+
+message AddressRouteRequest {
+    repeated string origins = 1;
+    repeated string destinations = 2;
+}
+
+message RouteResponse {
+    bool                ok = 1;
+    repeated RouteLeg   routeLegs = 2;
+}
+
+service Geo {
+    rpc GeoLocate(GeoRequest) returns (GeoResponse) {}
+    rpc GetGeoRoute(GeoRouteRequest) returns (RouteResponse) {}
+    rpc GetAddressRoute(AddressRouteRequest) returns (RouteResponse) {}
+    rpc AddGeoLocation(AddGeoLocationRequest) returns (GeoLocationResponse) {}
+    rpc GetGeoLocation(GetGeoLocationRequest) returns (GeoLocationResponse) {}
+    rpc GetGeoLocations(GetGeoLocationRequest) returns (GeoLocationsResponse) {}
+    rpc DeleteGeoLocation(DeleteGeoLocationRequest) returns (DeleteResponse) {}
+    rpc GetAddressTypes(AddressTypesRequest) returns (AddressTypesResponse) {}
+    rpc AddAddress(AddressRequest) returns (AddressResponse) {}
+    rpc UpdateAddress(AddressRequest) returns (AddressResponse) {}
+    rpc GetAddress(GetAddressRequest) returns (AddressResponse) {}
+    rpc GetAddresses(GetAddressesRequest) returns (AddressesResponse) {}
+    rpc GetAddressesByIds(GetAddressesRequest) returns (AddressesResponse) {}
+    rpc DeleteAddress(DeleteAddressRequest) returns (DeleteResponse) {}
+}

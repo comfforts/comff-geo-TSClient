@@ -1,3 +1,5 @@
 node_modules/
-lib/proto/_gen
+lib/proto/_gen/
+dist/lib/proto/_gen/
 dist/
+*/__test__
